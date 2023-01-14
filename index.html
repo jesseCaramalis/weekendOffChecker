@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weekend Off Checker</title>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Weekend Off Checker</h1>
+  </header>
+
+  <div class="about-section">
+    <p>This site helps you check if a specific date in the future is your weekend off, based on the alternating weekends schedule.</p>
+  </div>
+
+  <div class="input-section">
+    <form>
+      <label for="weekendOff">Which weekend do you get off?</label>
+      <select id="weekendOff" name="weekendOff">
+        <option value="upcoming">Upcoming/Current</option>
+        <option value="past">Past</option>
+      </select>
+      <br>
+      <label for="futureDate">Select a date in the future:</label>
+      <input type="date" id="futureDate" name="futureDate" onchange="checkDate()" min="2022-01-01" max="2030-12-31" required>
+      <br><br>
+      <button type="button" onclick="checkWeekendOff()" id="submitButton" disabled>Check</button>
+    </form>
+  </div>
+
+
+  <div class="output-section" id="output">
+    <!-- Output will be displayed here -->
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
