@@ -2,21 +2,16 @@ function isWeekendOff(weekendOff, futureDate) {
     const currentDate = new Date();
     const futureWeekend = new Date(futureDate);
     const currentWeekend = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + (6 - currentDate.getDay()));
-  
+    let numberOfWeekendsOff = 0;
     if (weekendOff === "upcoming") {
-        if (futureWeekend < currentWeekend) {
-            return false;
-        } else {
-            return (Math.floor((futureWeekend - currentWeekend) / (7 * 24 * 60 * 60 * 1000)) % 2 === 0);
-        }
-    } else if (weekendOff === "past") {
-        if (futureWeekend > currentWeekend) {
-            return false;
-        } else {
-            let pastWeekends = Math.floor((currentWeekend - futureWeekend) / (7 * 24 * 60 * 60 * 1000));
-            return (pastWeekends % 2 === 0);
-        }
-    } else {
+            numberOfWeekendsOff = Math.floor((futureWeekend - currentWeekend) / (7 * 24 * 60 * 60 * 1000));
+            return (numberOfWeekendsOff % 2 === 0)
+    } 
+    else if (weekendOff === "past") {
+            numberOfWeekendsOff = Math.floor((currentWeekend - futureWeekend) / (7 * 24 * 60 * 60 * 1000));
+            return (numberOfWeekendsOff % 2 === 0)
+    } 
+    else {
         return "Invalid input for weekendOff. Please enter 'upcoming' or 'past'";
     }
 }
