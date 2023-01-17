@@ -4,21 +4,22 @@ function isWeekendOff(weekendOff, futureDate) {
     const currentWeekend = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + (6 - currentDate.getDay()));
   
     if (weekendOff === "upcoming") {
-      if (futureWeekend < currentWeekend) {
-        return false;
-      } else {
-        return (Math.floor((futureWeekend - currentWeekend) / (7 * 24 * 60 * 60 * 1000)) % 2 === 0);
-      }
+        if (futureWeekend < currentWeekend) {
+            return false;
+        } else {
+            return (Math.floor((futureWeekend - currentWeekend) / (7 * 24 * 60 * 60 * 1000)) % 2 === 0);
+        }
     } else if (weekendOff === "past") {
-      if (futureWeekend > currentWeekend) {
-        return false;
-      } else {
-        return (Math.floor((currentWeekend - futureWeekend) / (7 * 24 * 60 * 60 * 1000)) % 2 === 0);
-      }
+        if (futureWeekend > currentWeekend) {
+            return false;
+        } else {
+            let pastWeekends = Math.floor((currentWeekend - futureWeekend) / (7 * 24 * 60 * 60 * 1000));
+            return (pastWeekends % 2 === 0);
+        }
     } else {
-      return "Invalid input for weekendOff. Please enter 'upcoming' or 'past'";
+        return "Invalid input for weekendOff. Please enter 'upcoming' or 'past'";
     }
-  }
+}
 
 function checkDate() {
     var date = new Date(document.getElementById("futureDate").value);
