@@ -13,7 +13,7 @@ function isWeekendOff(weekendOff, futureDate) {
       if (futureWeekend > currentWeekend) {
         return false;
       } else {
-        return (Math.ceil((currentWeekend - futureWeekend) / (7 * 24 * 60 * 60 * 1000)) % 2 === 0);
+        return (Math.floor((currentWeekend - futureWeekend) / (7 * 24 * 60 * 60 * 1000)) % 2 === 0);
       }
     } else {
       return "Invalid input for weekendOff. Please enter 'upcoming' or 'past'";
